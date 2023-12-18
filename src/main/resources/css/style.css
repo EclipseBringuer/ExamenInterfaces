@@ -1,0 +1,11 @@
+.title{
+    -fx-effect: dropshadow(gaussian, black, 8, 0, 0, 0);
+}
+
+#createdBy{
+    -fx-text-fill: #72c8f1;
+}
+#createdBy:hover{
+    -fx-underline: true;
+    -fx-text-fill:  #ffc828;
+}
