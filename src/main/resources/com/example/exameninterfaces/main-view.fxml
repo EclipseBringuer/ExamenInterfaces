@@ -180,7 +180,7 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelCoste" layoutX="10.0" layoutY="10.0" text="0€" textFill="WHITE">
+                        <Label fx:id="labelCoste" layoutX="10.0" layoutY="10.0" text="8€" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
                            </font>

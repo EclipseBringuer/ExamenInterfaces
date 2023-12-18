@@ -151,7 +151,7 @@ public class MainViewController implements Initializable {
             labelCoste.setText(calcularCoste() + "€");
         });
 
-        tarifa.selectedToggleProperty().addListener((observable,newValue,oldValue)->{
+        tarifa.selectedToggleProperty().addListener((observable, newValue, oldValue) -> {
             labelCoste.setText(calcularCoste() + "€");
         });
     }
@@ -216,20 +216,15 @@ public class MainViewController implements Initializable {
         }
         return out;
     }
-    private String tarifaToInteger() {
-        String out = null;
-        switch (value) {
-            case 8:
-                out = "Standard";
-                break;
-            case 6:
-                out = "Oferta";
-                break;
-            case 2:
-                out = "Larga";
-                break;
-            default:
-                break;
+
+    private long tarifaToLong() {
+        long out;
+        if (tarifa.selectedToggleProperty().getValue().equals(radioLarga)) {
+            out = 2;
+        } else if (tarifa.selectedToggleProperty().getValue().equals(radioOferta)) {
+            out = 6;
+        } else {
+            out = 8;
         }
         return out;
     }
@@ -257,16 +252,16 @@ public class MainViewController implements Initializable {
         }
     }
 
-    private Integer calcularCoste() {
-        Integer out = null;
+    private long calcularCoste() {
+        long out = 0;
         long dias = ChronoUnit.DAYS.between(dateEntrada.getValue(), dateSalida.getValue());
-        if(dias<=0){
+        if (dias <= 0) {
             App.makeNewAlert(Alert.AlertType.INFORMATION,
                     "Error al añadir",
                     "Diferencia de fechas no válida",
                     "Pulsa aceptar para volver al formulario").showAndWait();
-        }else{
-            out = dias*
+        } else {
+            out = dias * tarifaToLong();
         }
         return out;
     }
